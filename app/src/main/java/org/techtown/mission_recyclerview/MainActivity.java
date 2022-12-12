@@ -1,5 +1,7 @@
 package org.techtown.mission_recyclerview;
 
+import static org.techtown.mission_recyclerview.R.id.btn_grid;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,10 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button button;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
 
         editTextName = findViewById(R.id.editText_name);
@@ -78,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.e(tag, "버튼 클릭");
 
+            }
+        });
+
+        Button btn_grid = findViewById(R.id.btn_grid);
+        btn_grid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, GridActivity.class);
+                startActivity(i);
             }
         });
 
