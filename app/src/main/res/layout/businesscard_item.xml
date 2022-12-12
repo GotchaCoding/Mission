@@ -33,7 +33,7 @@
                     android:layout_width="86dp"
                     android:layout_height="50dp"
                     android:layout_margin="2dp"
-                    android:background="#FF5722"
+                    android:background="#0593A2"
                     android:padding="2dp" />
 
                 <TextView
@@ -41,7 +41,7 @@
                     android:layout_width="211dp"
                     android:layout_height="48dp"
                     android:layout_margin="2dp"
-                    android:background="#22FFED"
+                    android:background="#103778"
                     android:padding="2dp" />
 
             </LinearLayout>
@@ -51,7 +51,7 @@
                 android:layout_width="303dp"
                 android:layout_height="60dp"
                 android:layout_margin="2dp"
-                android:background="#CDDC39" />
+                android:background="#FF7A48" />
 
         </LinearLayout>
 
