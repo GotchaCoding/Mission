@@ -2,6 +2,7 @@ package org.techtown.mission_recyclerview;
 
 import static org.techtown.mission_recyclerview.R.id.btn_grid;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     Uri uri;
 
     Button button;
+    BusinesscardAdapter adapter;
 
+    int REQUEST_CODE = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        BusinesscardAdapter adapter = new BusinesscardAdapter();
+         adapter = new BusinesscardAdapter();
 
 
 
@@ -61,28 +64,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(Intent.ACTION_PICK);
                 i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivity(i);
-
-                 uri = i.getData();
-                 String uriToString = uri.toString();
-
-                Log.e(tag, "uri 값 확인 : " + uri);
-                Log.e(tag, "uritostring 값 확인 : " + uriToString);
-
-
-                String name = editTextName.getText().toString();
-                String birth = editTextBirth.getText().toString();
-                String number = edittextNumber.getText().toString();
-
-
-                adapter.addItem(new BusinesscardActivity(name,birth,number,uriToString));
-
-
-                Log.e(tag, "버튼 클릭");
-
+                startActivityForResult(i, REQUEST_CODE);
             }
         });
 
@@ -99,5 +83,23 @@ public class MainActivity extends AppCompatActivity {
 //        adapter.addItem(new BusinesscardActivity("ㅇㄹ","ㅇㄹ","ㄴㅇㄹ","ㅇㄹ"));
 //        recyclerView.setAdapter(adapter);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE) {
+            uri = data.getData();
+            String uriToString = uri.toString();
+
+            Log.e(tag, "uri 값 확인 : " + uri);
+            Log.e(tag, "uritostring 값 확인 : " + uriToString);
+
+
+            String name = editTextName.getText().toString();
+            String birth = editTextBirth.getText().toString();
+            String number = edittextNumber.getText().toString();
+            adapter.addItem(new BusinesscardActivity(name, birth, number, uriToString));
+        }
     }
 }

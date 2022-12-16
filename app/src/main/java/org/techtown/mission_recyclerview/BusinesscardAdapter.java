@@ -58,8 +58,8 @@ public class BusinesscardAdapter extends RecyclerView.Adapter<BusinesscardAdapte
             textView_num_A.setText(item.getNumber());
 
             Log.e("Adapter" , "itme.getPicture : " + item.getPicture());
-            Glide.with(itemView).load(R.drawable.picachu).apply(new RequestOptions().circleCrop()).into(imageView_A);
-//            Glide.with(itemView).load(item.getPicture()).apply(new RequestOptions().circleCrop()).into(imageView_A);
+//            Glide.with(itemView).load(R.drawable.picachu).apply(new RequestOptions().circleCrop()).into(imageView_A);
+            Glide.with(itemView).load(item.getPicture()).apply(new RequestOptions().circleCrop()).into(imageView_A);
 //            imageView_A.setImageResource(R.drawable.ic_launcher_background);
 
         }
